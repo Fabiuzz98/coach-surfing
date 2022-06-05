@@ -1,26 +1,64 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app-container">
+    <theHeader></theHeader>
+
+    <router-view> </router-view>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import theHeader from './layout/TheHeader.vue';
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    theHeader,
+  },
+
+  methods: {
+    checkRoute() {
+      if (
+        this.$route.name === 'authentication' ||
+        this.$route.name === 'registration'
+      ) {
+        this.$store.dispatch('hideNavigation');
+        return;
+      } else {
+        this.$store.dispatch('showNavigation');
+      }
+    },
+  },
+  created() {
+    this.$store.dispatch('tryLogin');
+    this.checkRoute();
+  },
+
+  watch: {
+    $route() {
+      this.checkRoute();
+    },
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  line-height: 1;
+  overflow-x: hidden;
+  background: linear-gradient(287.83deg, #8d99ae, rgba(237, 242, 244, 0));
 }
 </style>
