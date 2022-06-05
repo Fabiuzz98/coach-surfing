@@ -3,12 +3,12 @@
 BUILT WITH: <br>
 This application is fully responsive and has been made with Vue-js, HTML, SCSS and Firebase for the backend.
 
-<br><br>
+<br>
 
 TRY THIS APP HERE: <br>
 https://coach-surfing-fabio.netlify.app
 
-<br><br>
+<br>
 
 DESCRIPTION OF THE APP: <br>
 This app is for both students that want to learn how to code thus is possible for them to contact a teacher and for coaches that can register and create their coach profile to get contacted. <br>
@@ -17,7 +17,7 @@ It's also possible to filter coaches based on what the coach teaches and after v
 Everyone that instead feels brave enough to coach 😜, can register on the app and later on create their coach profile so that they can be contacted on their profile. <br>
 At this point a coach can log in whenever they want to check if someone wrote them. It's possible to click on the message and automatically get redirected on their default email handler or click on the delete icon to get rid of the message from your profile.
 
-<br><br>
+<br>
 
 MORE ABOUT THE APP:<br>
 The app is FULLY RESPONSIVE, it uses flexbox, css grid, keyframes and is provided with error handling and functions as the one that will auto-logout after a given time from the authentication.<br>
