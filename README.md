@@ -1,7 +1,7 @@
 # coach-surfing
 
 BUILT WITH: <br>
-This application is fully responsive and has been made with Vue-js, HTML, SCSS and Firebase for the backend.
+This application is fully responsive and has been made with Vue-js, vuex, vue-router, HTML, SCSS and Firebase for the backend.
 
 <br>
 
@@ -15,7 +15,7 @@ This app is for both students that want to learn how to code thus is possible fo
 Everyone accessing the app that is not authenticated can view the list of registered coaches, click on one and take a look at all their info in details, prices, description, profile image and the fields they are mostly specialized in.
 It's also possible to filter coaches based on what the coach teaches and after viewing their details and info, you can contact them through the website. <br>
 Everyone that instead feels brave enough to coach 😜, can register on the app and later on create their coach profile so that they can be contacted on their profile. <br>
-At this point a coach can log in whenever they want to check if someone wrote them. It's possible to click on the message and automatically get redirected on their default email handler or click on the delete icon to get rid of the message from your profile.
+At this point a coach can log in whenever they want to check if someone wrote them. It's possible to click on the messages received and automatically get redirected on their default email handler or click on the delete icon to get rid of the message from your profile.
 
 <br>
 
