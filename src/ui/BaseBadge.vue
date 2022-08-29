@@ -30,8 +30,16 @@ export default {
   border-radius: 5px;
   padding: 1rem 1.5rem;
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.02);
-  margin-bottom: 1rem;
   background-color: #f8f8f8;
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+
+    @media (max-width: 550px) {
+      margin-bottom: 0;
+    }
+  }
+
   @media (max-width: 980px) {
     margin-top: 1rem;
     font-size: 1.4rem;

@@ -564,23 +564,7 @@ export default {
     }
 
     .coaches-list-container {
-      width: 80rem;
-      @media (max-width: 1100px) {
-        width: 75rem;
-      }
-      @media (max-width: 980px) {
-        width: 60rem;
-      }
-      @media (max-width: 620px) {
-        width: 50rem;
-      }
-      @media (max-width: 510px) {
-        width: 38rem;
-      }
-      @media (max-width: 420px) {
-        width: 35rem;
-      }
-
+      // max-width: 110rem;
       .coaches-list-title {
         font-size: 1.6rem;
         text-transform: uppercase;

@@ -1,37 +1,39 @@
 <template>
-  <div class="dialog-container">
-    <div class="dialog">
-      <div class="image-container">
-        <img v-bind:src="img" alt="profile picture" class="coaches-picture" />
+  <div class="dialog">
+    <div class="image-container">
+      <img v-bind:src="img" alt="profile picture" class="coaches-picture" />
+    </div>
+
+    <div class="text-container">
+      <div class="name-price">
+        <p class="coach-name">{{ fullName }}</p>
+
+        <p class="coach-price">
+          <span>${{ hourlyRate }}</span
+          >/hour
+        </p>
       </div>
+      <div class="btn-container">
+        <div class="btn-contact">
+          <base-button mode="empty" class="btn-style" link :to="goToContact"
+            >Contact</base-button
+          >
+        </div>
 
-      <p class="coach-name">{{ fullName }}</p>
-
-      <p class="coach-price">
-        <span>${{ hourlyRate }}</span
-        >/hour
-      </p>
-
-      <div class="specs">
-        <base-badge
-          v-for="area in areas"
-          :key="area"
-          :mode="area"
-          :name="area"
-        ></base-badge>
+        <div class="btn-detail">
+          <base-button mode="full" class="btn-style" link :to="goToDetail"
+            >View Detail</base-button
+          >
+        </div>
       </div>
-
-      <div class="btn-contact">
-        <base-button mode="empty" class="btn-style" link :to="goToContact"
-          >Contact</base-button
-        >
-      </div>
-
-      <div class="btn-detail">
-        <base-button mode="full" class="btn-style" link :to="goToDetail"
-          >View Detail</base-button
-        >
-      </div>
+    </div>
+    <div class="specs">
+      <base-badge
+        v-for="area in areas"
+        :key="area"
+        :mode="area"
+        :name="area"
+      ></base-badge>
     </div>
   </div>
 </template>
@@ -52,27 +54,18 @@ export default {
 
 <style scoped lang="scss">
 .dialog {
-  margin: 2rem;
   display: grid;
-  grid-template-columns: 0.7fr 0.55fr 0.6fr 1fr;
-  grid-template-rows: 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: minmax(min-content, 20rem) 1fr 1fr;
+  margin: 2rem;
   background-color: #edf2f4;
   border-radius: 5px;
   box-shadow: 6px 7px 22px 0px rgba(0, 0, 0, 0.08);
   transition: all 0.3s;
 
-  @media (max-width: 1100px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (max-width: 980px) {
-    grid-template-columns: 0.7fr 0.55fr 0.6fr 1fr;
-  }
-  @media (max-width: 620px) {
-    grid-template-columns: 1.3fr 0.8fr 1.5fr 0.5fr;
-  }
-  @media (max-width: 510px) {
-    grid-template-columns: 1fr 1.5fr;
-    grid-template-rows: 2fr 0.5fr;
+  @media (max-width: 550px) {
+    grid-template-columns: minmax(min-content, 20rem) minmax(min-content, 40rem);
+    grid-template-rows: minmax(14rem, max-content) 1fr;
+    margin: 2rem 1rem;
   }
 
   &:hover {
@@ -88,24 +81,10 @@ export default {
   }
 
   .image-container {
-    height: 17rem;
-    max-width: 18rem;
-    grid-row: 1 / 5;
-    padding: 1rem 2rem 1rem 1rem;
-    @media (max-width: 980px) {
-      height: 14rem;
-    }
-    @media (max-width: 620px) {
-      height: 13rem;
-      padding: 1rem 0rem 1rem 1rem;
-    }
-    @media (max-width: 510px) {
-      grid-column: 1;
-      grid-row: 1 / 2;
-      justify-self: start;
-      align-self: start;
-      height: 20rem;
-    }
+    grid-column: 1 / 2;
+    padding: 1rem;
+    min-width: 11rem;
+    max-height: 23rem;
 
     .coaches-picture {
       height: 100%;
@@ -115,140 +94,80 @@ export default {
     }
   }
 
-  .coach-name {
-    align-self: end;
-    justify-self: start;
-    font-size: 2.4rem;
-    color: #11151c;
-    font-weight: 500;
-    grid-column: 2/4;
-    text-transform: uppercase;
-    padding-left: 1.5rem;
-    letter-spacing: 0.18rem;
-
-    @media (max-width: 980px) {
-      font-size: 1.8rem;
-    }
-    @media (max-width: 510px) {
-      grid-column: 2;
-      grid-row: 1;
-      justify-self: start;
-      align-self: start;
-      margin: 2rem auto 0 1rem;
-      padding: 0;
-      font-size: 2.4rem;
-    }
-  }
-
-  .coach-price {
-    grid-column: 2;
-    grid-row: 2;
-    align-self: start;
-    justify-self: start;
-    font-size: 1.5rem;
-    padding-left: 1.5rem;
-    padding-top: 0.8rem;
-    font-weight: 500;
-    @media (max-width: 980px) {
-      font-size: 1.2rem;
-    }
-    @media (max-width: 510px) {
-      grid-column: 2;
-      grid-row: 1;
-      align-self: center;
-      padding: 0;
-      font-size: 1.4rem;
-      margin: 0 0 4rem 1rem;
+  .text-container {
+    display: grid;
+    grid-column: 2 / 3;
+    grid-template-columns:
+      minmax(0.5rem, 5rem) repeat(2, minmax(max-content, 1fr))
+      1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    @media (max-width: 550px) {
+      grid-row: 1 / 2;
     }
 
-    span {
-      font-weight: 600;
-      font-size: 1.8rem;
-      color: #5c6378;
+    .name-price {
+      grid-column: 2 / span 2;
+      margin-top: 1.5rem;
+      .coach-name {
+        font-size: 2.4rem;
+        color: #11151c;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 3px;
 
-      @media (max-width: 980px) {
-        font-size: 1.2rem;
+        @media (max-width: 550px) {
+          letter-spacing: 1px;
+          font-size: 2rem;
+        }
       }
-      @media (max-width: 510px) {
-        font-size: 1.4rem;
+
+      .coach-price {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        font-weight: 500;
+
+        span {
+          font-weight: 600;
+          font-size: 1.8rem;
+          color: #5c6378;
+        }
+      }
+    }
+
+    .btn-container {
+      grid-row: 2;
+      grid-column: 2 / span 2;
+      display: flex;
+      align-items: center;
+      justify-self: start;
+      gap: 2rem;
+
+      .btn-contact {
+        cursor: pointer;
+      }
+
+      .btn-detail {
+        cursor: pointer;
       }
     }
   }
 
   .specs {
-    grid-column: 4;
+    grid-column: 3 / -1;
+    justify-self: center;
     align-self: center;
-    grid-row: 1 / 5;
-    justify-self: end;
-    text-align: center;
-    padding-right: 4rem;
+    grid-row: 1 / -1;
+    margin: 0 2rem;
 
-    @media (max-width: 620px) {
-      padding-right: 1rem;
-    }
-    @media (max-width: 510px) {
-      grid-column: 1 / 3;
-      grid-row: 2;
-      padding: 0;
+    @media (max-width: 550px) {
+      grid-column: 1 / -1;
+      grid-row: 2 / span 1;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 1rem 0;
       gap: 1rem;
-      justify-self: center;
-      text-align: center;
-    }
-  }
-
-  .btn-contact {
-    grid-row: 3 / 5;
-    align-self: center;
-    justify-self: start;
-    cursor: pointer;
-    padding-left: 1.5rem;
-    padding-bottom: 1rem;
-
-    @media (max-width: 1100px) {
-      margin: 0.8rem 1.5rem;
-    }
-    @media (max-width: 980px) {
-      padding-left: 0rem;
-    }
-    @media (max-width: 510px) {
-      grid-row: 1;
-      grid-column: 2;
-      align-self: end;
-      justify-self: start;
-      margin: 1.5rem 0 2rem 1rem;
-    }
-  }
-
-  .btn-detail {
-    grid-column: 3;
-    grid-row: 3 / 5;
-    align-self: center;
-    justify-self: start;
-    cursor: pointer;
-    padding-left: 1.5rem;
-    padding-bottom: 1rem;
-
-    @media (max-width: 1100px) {
-      padding-left: 0rem;
-    }
-    @media (max-width: 980px) {
-    }
-    @media (max-width: 510px) {
-      grid-row: 1;
-      grid-column: 2;
-      align-self: center;
-      margin: 6.5rem 0 0 1rem;
-    }
-  }
-
-  .btn-style {
-    @media (max-width: 980px) {
-      font-size: 1.2rem;
-      padding: 0.4rem 1rem;
-    }
-    @media (max-width: 510px) {
-      padding: 0.6rem 1.2rem;
     }
   }
 }
